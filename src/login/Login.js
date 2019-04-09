@@ -7,7 +7,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
 
 class Login extends Component{
 
@@ -16,6 +17,7 @@ class Login extends Component{
         this.state={
             username:"",
             password:"",
+            open:false,
         }
     }
 
@@ -25,6 +27,9 @@ class Login extends Component{
     }
 
     submit(){
+        if(this.state.username == "" || this.state.password ==""){
+            this.setState({open:true});
+        }
         console.log(this.state);
     }
 
@@ -40,6 +45,10 @@ class Login extends Component{
                 break;
         }
     }
+    handleClose= () => {
+        this.setState({ open: false });
+      };
+    
 
     render(){
         return(
@@ -87,7 +96,6 @@ class Login extends Component{
                                     send
                                 </i>
                             </IconButton> */}
-                            <Link to="/main">
                             <Button 
                                 onClick={this.submit.bind(this)}
                                 variant="contained" color="primary"
@@ -96,10 +104,33 @@ class Login extends Component{
                             </i>
                                 Sign In
                             </Button>
-                            </Link>
                         </div>
                     </CardActions>
                 </Card>
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                    open={this.state.open}
+                    autoHideDuration={6000}
+                    onClose={this.handleClose}
+                    ContentProps={{
+                        'aria-describedby': 'message-id',
+                    }}
+                    message={<div><span id="message-id" style={{color:"red"}}>Invalid username or password, please try again</span></div>}
+                    action={[
+                        <IconButton
+                            key="close"
+                            aria-label="Close"
+                            color="inherit"
+                            className="no inputs"
+                            onClick={this.handleClose}
+                        >
+                            <CloseIcon />
+                        </IconButton>,
+                    ]}
+                />
             </div>
         )
     }

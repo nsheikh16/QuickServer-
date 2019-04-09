@@ -9,12 +9,14 @@ import CreateJob from './create job/CreateJob';
 import MainPage from './main page/MainPage';
 import Profile from './profile/Profile';
 
+
 class App extends Component {
 
   constructor(props){
     super(props);
     this.state={
       thing:1,
+      open:false,
     }
   }
 

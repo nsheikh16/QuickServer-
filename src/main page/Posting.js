@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -30,11 +29,11 @@ class Posting extends Component{
     constructor(props){
         super(props);
         this.state={
-            title:"Posting 1",
-            summary:"a very brief summary of the job for posting 1",
-            price:20,
-            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            author:"Ross Hahn",
+            title:"",
+            summary:"",
+            price:0,
+            description:"",
+            author:"",
             open:false,
         }
         this.handleClose=this.handleClose.bind(this);
@@ -42,21 +41,23 @@ class Posting extends Component{
     }
 
     componentDidMount(){
-        console.log("props",this.props)
-        // this.setState({
-        //     title:this.props.title,
-        //     summary:this.props.summary,
-        //     price:this.props.price,
-        //     description:this.props.description,
-        //     author:this.props.author,
-        // })
+        console.log("props",this.props);
+        this.setState({
+            title:this.props.data.title,
+            summary:this.props.data.summary,
+            price:this.props.data.price,
+            description:this.props.data.description,
+            author:this.props.data.author,
+        })
     }
 
     handleClose(){
+        console.log(this.props)
         this.setState({open:false});
     }
 
     handleOpen(){
+        console.log(this.props)
         this.setState({open:true});
     }
 
