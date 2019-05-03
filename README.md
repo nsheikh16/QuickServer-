@@ -1,0 +1,2 @@
+# QuickServer-
+The purpose of the application is to connect students who need things done and those who are willing to do things for other students for money. The application will be used by people to look for jobs to do or post the jobs that they need done. They can also look at their own profile to see how many jobs they’ve done and gotten done.The primary users will be college students starting at one university and then branching to others. 
